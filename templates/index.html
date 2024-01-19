@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texture Overlay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Texture Overlay</h1>
+    <form method="post" action="{{ url_for('index') }}" enctype="multipart/form-data">
+        <label for="room_image">Room Image:</label>
+        <input type="file" name="room_image" accept=".jpg, .jpeg, .png" required>
+        
+        <label for="texture_image">Texture Image:</label>
+        <input type="file" name="texture_image" accept=".jpg, .jpeg, .png" required>
+        
+        <button type="submit">Process</button>
+    </form>
+
+    {% if result_image %}
+        <h2>Result</h2>
+        <img src="{{ result_image }}" alt="Result Image">
+    {% endif %}
+</body>
+</html>
